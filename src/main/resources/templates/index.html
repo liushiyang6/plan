@@ -2,48 +2,66 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>家务计划</title>
+    <title>🙌家务计划</title>
 </head>
 <body>
-<h1>家务计划</h1>
+<h1>🙌家务计划</h1>
 <br>
-<hr>
 <div>
     <br>
-    <h3>最新任务分配时间(将于每周日晚间自动分配)</h3>
-    <h3 th:text="${planResponse.getDistributeTimeStr()}"></h3>
-    <table cellspacing="0" border="1px">
-        <thead>
-        <tr>
-            <th th:width="150">家务</th>
-            <th th:width="100">执行人</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="planDetailsResponse:${planResponse.getPlanDetailsResponseList()}"
-            th:if="${planDetailsResponse.getPeopleName()=='老公'}">
-            <td th:text="${planDetailsResponse.getHouseworkName()}"></td>
-            <td th:text="${planDetailsResponse.getPeopleName()}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <h3>最新任务分配时间</h3>
+    <h3 th:text="${planResponse.getDistributeTimeStr()}+'(将于每周日晚间自动分配)'" ></h3>
 
     <br>
-    <table cellspacing="0" border="1px">
-        <thead>
+    <br>
+    <br>
+    <table width="50%" align="center">
         <tr>
-            <th th:width="150">家务</th>
-            <th th:width="100">执行人</th>
+            <td>
+                <table width="50%" align="center">
+                    <thead>
+                    <tr>
+                        <th th:width="150">👨‍🦯老公家务</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="planDetailsResponse:${planResponse.getPlanDetailsResponseList()}"
+                        th:if="${planDetailsResponse.getPeopleName()=='老公'}">
+                        <td th:text="${planDetailsResponse.getHouseworkName()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </td>
+
+            <td>
+                <table  width="50%" align="center">
+                    <thead>
+                    <tr>
+                        <th th:width="150">👩‍🦯老婆家务</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="planDetailsResponse:${planResponse.getPlanDetailsResponseList()}"
+                        th:if="${planDetailsResponse.getPeopleName()=='老婆'}">
+                        <td th:text="${planDetailsResponse.getHouseworkName()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
         </tr>
-        </thead>
-        <tbody>
-        <tr th:each="planDetailsResponse:${planResponse.getPlanDetailsResponseList()}"
-            th:if="${planDetailsResponse.getPeopleName()=='老婆'}">
-            <td th:text="${planDetailsResponse.getHouseworkName()}"></td>
-            <td th:text="${planDetailsResponse.getPeopleName()}"></td>
-        </tr>
-        </tbody>
+
     </table>
+
+
+
 </div>
 </body>
+<style>
+    body {
+        color: white; /*字体颜色黑色*/
+        background: orange;
+        text-align: center;
+    }
+</style>
 </html>
